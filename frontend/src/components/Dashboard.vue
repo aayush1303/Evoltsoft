@@ -315,8 +315,8 @@ export default {
 
                 // Reset the form
                 this.resetForm();
-                alert('Charger added successfully!');
                 this.getStations();
+                alert('Charger added successfully!');
 
 
             } catch (error) {
