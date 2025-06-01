@@ -1,21 +1,19 @@
 import mongoose from 'mongoose';
 import 'dotenv/config.js';
 
-let isConnected = false;
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
 
 export const connectDB = async () => {
-  if (isConnected) {
-    return; // Use existing connection
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(process.env.MONGODB_URI);
   }
 
-  try {
-    const db = await mongoose.connect(process.env.MONGODB_URI, {
-      bufferCommands: false,
-    });
-    isConnected = true;
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error('MongoDB connection error:', error.message);
-    throw error; // important to let the caller know
-  }
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
