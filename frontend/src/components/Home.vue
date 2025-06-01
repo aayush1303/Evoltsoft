@@ -1,7 +1,7 @@
 <template>
   <div
     class="relative h-screen w-full bg-cover bg-center overflow-hidden"
-    :style="backgroundStyle"
+    :style="{ backgroundImage: `url(${backgroundImage})` }"
   >
     <!-- Overlay -->
     <div class="absolute inset-0 bg-black/20"></div>
@@ -67,14 +67,12 @@
 
 <script setup>
 import {useRouter} from 'vue-router';
-
+import homepageImage from '../assets/images/home.jpeg';
 const router = useRouter();
 
 function goToLogin() {
   router.push('/login');
 }
 
-const backgroundStyle = {
-  backgroundImage: "url('src/assets/images/c.jpeg')",
-};
+const backgroundImage = homepageImage;
 </script>

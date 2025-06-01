@@ -10,12 +10,12 @@ const app = express();
 const port = 4000;
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://gusto-admin.vercel.app'] // Replace with your frontend and admin domains
+  origin: ['https://evoltsoft.vercel.app'] // Replace with your frontend and admin domains
 }));
 
 
 //middleware
-app.use(express.json());
+app.use(express.json());app
 
 //db connection
 connectDB();
