@@ -10,7 +10,7 @@ const app = express();
 const port = 4000;
 
 app.use(cors({
-  origin: ['https://evoltsoft.vercel.app','http://localhost:5173'] // Replace with your frontend and admin domains
+  origin: ['https://evoltsoft-frontend.vercel.app','http://localhost:5173'] // Replace with your frontend and admin domains
 }));
 
 
