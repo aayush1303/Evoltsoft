@@ -1,7 +1,7 @@
 import Station from '../models/stationModel.js';
 
 export const createStation = async (req, res) => {
-  const { name, location, status, power, powerOutput, connectorType } = req.body;
+  const { name, location, status, powerOutput, connectorType } = req.body;
   try {
     const station = await Station.create({
       name,
