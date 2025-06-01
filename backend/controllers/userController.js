@@ -2,13 +2,14 @@ import userModel from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import validator from "validator";
-
+import { connectDB } from "../config/db.js";
 
 //Login user
 const loginUser = async (req, res) => {
+    
     const {email,password} = req.body;
     try {
-
+        await connectDB();
         //Check if user exist
         const user = await userModel.findOne({email});
         if(!user){
