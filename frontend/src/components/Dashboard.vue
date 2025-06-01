@@ -171,7 +171,7 @@
                                         class="text-[#27391C] hover:underline cursor-pointer">
                                         <v-icon name="co-pencil" scale="1" />
                                     </button>
-                                    <button @click="deleteStation(station)" class="text-red-600 hover:underline">
+                                    <button @click="deleteStation(station)" class="text-red-600 hover:underline cursor-pointer">
                                         <v-icon name="px-trash" scale="1" />
                                     </button>
                                 </div>
