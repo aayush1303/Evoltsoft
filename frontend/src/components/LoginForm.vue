@@ -82,6 +82,7 @@ async function onLogin() {
   isLoading.value = true;
 
   let apiUrl = url;
+  console.log('API URL:', apiUrl);
   if (currState.value === 'Login') {
     apiUrl += '/api/user/login';
   } else {
