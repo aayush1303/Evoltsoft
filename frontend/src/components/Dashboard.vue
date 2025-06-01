@@ -308,13 +308,11 @@ export default {
 
                 if (!response.ok) throw new Error('Failed to add station');
 
-                const data = await response.json();
-
-                // Update the stations array
-                this.stations = [...this.stations, data];
+            
 
                 // Reset the form
                 this.resetForm();
+                this.getStations();
                 alert('Charger added successfully!');
 
 
