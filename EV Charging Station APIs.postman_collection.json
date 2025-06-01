@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "3cd81bec-a5fe-4852-bd9f-e6dd8073f693",
+		"name": "EV Charging Station APIs",
+		"description": "This collection contains all the API endpoints for the **EV Charging Station Management App**. It covers user authentication and full CRUD operations for managing electric vehicle charging stations.\n\n## Description\n\n- **User Authentication:**\n    \n    Register new users and log in existing users to receive a JWT token for secure access.\n    \n- **Charging Station Management:**\n    \n    Create, read, update, and delete charging station records. These routes are protected and require a valid JWT token in the `Authorization` header as a Bearer token.\n    \n\n## Usage\n\n1. Use the `/api/users/register` endpoint to create a new user account.\n    \n2. Use the `/api/users/login` endpoint to log in and receive a JWT token.\n    \n3. For all `/api/stations` endpoints, include the JWT token in the `Authorization` header using the Bearer token scheme to authenticate your requests.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34704602"
+	},
+	"item": [
+		{
+			"name": "Auth Routes",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Alice\",\r\n  \"email\": \"alice@example.com\",\r\n  \"password\": \"secret123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://evoltsoft-backend.vercel.app/api/user/register",
+							"protocol": "https",
+							"host": [
+								"evoltsoft-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"alice@example.com\",\r\n  \"password\": \"secret123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://evoltsoft-backend.vercel.app/api/user/login",
+							"protocol": "https",
+							"host": [
+								"evoltsoft-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "These routes handle **user authentication and registration**.\n\n| Method | Endpoint | Description |\n| --- | --- | --- |\n| POST | `/api/users/register` | Register a new user |\n| POST | `/api/users/login` | Login and receive a JWT token |"
+		},
+		{
+			"name": "Station Routes",
+			"item": [
+				{
+					"name": "Add Charger Station",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2MzYmE2ODdkOTM5Yjg0NTY5YThlMCIsImlhdCI6MTc0ODc3Nzg5NH0.xPyY65bg2y65PhOuFloyEBWDqca_b-8c-YEXRqmw1Yg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Berlin Charger\",\r\n  \"location\": { \"latitude\": 52.5200, \"longitude\": 13.4050 },\r\n  \"status\": \"Active\",\r\n  \"powerOutput\": 55,\r\n  \"connectorType\": \"Type2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://evoltsoft-backend.vercel.app/api/station",
+							"protocol": "https",
+							"host": [
+								"evoltsoft-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"station"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get stations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2MzYmE2ODdkOTM5Yjg0NTY5YThlMCIsImlhdCI6MTc0ODc3Nzg5NH0.xPyY65bg2y65PhOuFloyEBWDqca_b-8c-YEXRqmw1Yg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://evoltsoft-backend.vercel.app/api/station",
+							"protocol": "https",
+							"host": [
+								"evoltsoft-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"station"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete charging station",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2MzYmE2ODdkOTM5Yjg0NTY5YThlMCIsImlhdCI6MTc0ODc3Nzg5NH0.xPyY65bg2y65PhOuFloyEBWDqca_b-8c-YEXRqmw1Yg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://evoltsoft-backend.vercel.app/api/station/683c445e5e7c641eea298bc6",
+							"protocol": "https",
+							"host": [
+								"evoltsoft-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"station",
+								"683c445e5e7c641eea298bc6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Station details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4M2MzYmE2ODdkOTM5Yjg0NTY5YThlMCIsImlhdCI6MTc0ODc3Nzg5NH0.xPyY65bg2y65PhOuFloyEBWDqca_b-8c-YEXRqmw1Yg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Berlin Charger\",\r\n  \"location\": { \"latitude\": 52.5200, \"longitude\": 13.4050 },\r\n  \"status\": \"Active\",\r\n  \"powerOutput\": 78,\r\n  \"connectorType\": \"Type1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://evoltsoft-backend.vercel.app/api/station/683c4d5e0945941d0043ca0b",
+							"protocol": "https",
+							"host": [
+								"evoltsoft-backend",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"station",
+								"683c4d5e0945941d0043ca0b"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "These routes handle **CRUD operations for EV charging stations** and are **protected** by authentication middleware (`authMiddleware`).\n\n| Method | Endpoint | Description |\n| --- | --- | --- |\n| POST | `/api/stations` | Create a new charging station |\n| GET | `/api/stations` | Retrieve all charging stations |\n| PUT | `/api/stations/:id` | Update a charging station by ID |\n| DELETE | `/api/stations/:id` | Delete a charging station by ID |\n\n**These routes require authentication.**\n\nAfter logging in via the `/api/users/login` route, you will receive a **JWT token** in the response.\n\nTo access any protected station route, include the token in the `Authorization` header in **Postman** as follows:\n\n1. Go to the **Authorization** tab.\n    \n2. Set **Type** to `Bearer Token`.\n    \n3. Paste your token in the **Token** field."
+		}
+	]
+}
