@@ -18,14 +18,7 @@ app.use(cors({
 app.use(express.json());app
 
 //db connection
-let dbConnected = false;
-connectDB().then(() => {
-  dbConnected = true;
-  console.log('Database connection established');
-}).catch(err => {
-  console.error('Database connection failed:', err);
-  process.exit(1); // Exit if DB connection fails
-});
+connectDB();
 
 //api endpoints
 app.use('/api/user', userRouter);
